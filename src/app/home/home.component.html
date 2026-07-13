@@ -1,0 +1,31 @@
+<div class="courses-panel">
+
+  <div class="header">
+    <div class="header-left">
+      <div class="section-icon">
+        <courses-section-icon />
+      </div>
+      <h2 class="title">All Courses</h2>
+    </div>
+    <button class="btn-icon" routerLink="/add-new-course" title="Add course">+</button>
+  </div>
+
+  <div class="tabs">
+    <div class="tab" [class.active]="activeTab() === 'beginner'" (click)="activeTab.set('beginner')">Beginners</div>
+    <div class="tab" [class.active]="activeTab() === 'advanced'" (click)="activeTab.set('advanced')">Advanced</div>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-indicator">
+      <div class="spinner"></div>
+    </div>
+  } @else {
+    @if (activeTab() === 'beginner') {
+      <courses-card-list [courses]="beginnerCourses()" />
+    }
+    @if (activeTab() === 'advanced') {
+      <courses-card-list [courses]="advancedCourses()" />
+    }
+  }
+
+</div>

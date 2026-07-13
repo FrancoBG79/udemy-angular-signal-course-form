@@ -1,0 +1,23 @@
+
+<input type="file" class="file-input" [accept]="requiredFileType()" (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload-row">
+  @if (value()) {
+    <img [src]="value()" alt="Preview" class="upload-preview">
+  }
+  <div class="field file-field">
+    <input [disabled]="true" [value]="fileName()" placeholder="No file chosen" readonly>
+  </div>
+  <button class="btn-icon" type="button" (click)="onClick(fileUpload)"
+          [disabled]="disabled()" title="Attach file">📎</button>
+</div>
+
+@if (uploadProgress() !== null) {
+  <div class="progress-bar">
+    <div class="progress-bar-fill" [style.width.%]="uploadProgress()"></div>
+  </div>
+}
+
+@if (fileUploadError()) {
+  <div class="upload-error">Upload failed. Please try again.</div>
+}

@@ -1,0 +1,42 @@
+<form [formRoot]="step2Form">
+
+  <div class="field">
+    <label>Course Type</label>
+    <div class="radio-group">
+      <label class="radio-option">
+        <input type="radio" [formField]="step2Form.courseType" value="free"> Free
+      </label>
+      <label class="radio-option">
+        <input type="radio" [formField]="step2Form.courseType" value="premium"> Premium
+      </label>
+    </div>
+  </div>
+
+  <file-upload [formField]="step2Form.thumbnail" requiredFileType="image/png" />
+
+  <div class="field">
+    <label>Price</label>
+    <input type="number" [formField]="step2Form.price" placeholder="Price">
+    <field-error [field]="step2Form.price()" />
+  </div>
+
+
+  @if (!step2Form.promoStartAt().hidden()) {
+    <div class="field">
+      <label>Promo Start Date</label>
+      <input type="date" [formField]="step2Form.promoStartAt">
+      <field-error [field]="step2Form.promoStartAt()" />
+    </div>
+  }
+
+  @if (!step2Form.promoEndAt().hidden()) {
+    <div class="field">
+      <label>Promo End Date</label>
+      <input type="date" [formField]="step2Form.promoEndAt">
+      <field-error [field]="step2Form.promoEndAt()" />
+    </div>
+  }
+
+  <field-error [field]="step2Form()" />
+
+</form>

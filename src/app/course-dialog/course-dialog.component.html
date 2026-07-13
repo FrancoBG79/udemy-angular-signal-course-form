@@ -1,0 +1,45 @@
+<div class="dialog-header">
+  <div class="dialog-icon">
+    <edit-icon />
+  </div>
+  <div>
+    <h2 class="modal-title">{{ course().description }}</h2>
+  </div>
+</div>
+
+<form [formRoot]="form">
+  <div class="field">
+    <label for="description">Course Description</label>
+    <input [formField]="form.description" id="description" placeholder="Course description">
+  </div>
+
+  <div class="field">
+    <label for="category">Category</label>
+    <select id="category"  [formField]="form.category">
+      <option value="BEGINNER">Beginner</option>
+      <option value="INTERMEDIATE">Intermediate</option>
+      <option value="ADVANCED">Advanced</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="releasedAt">Release Date</label>
+    <input id="releasedAt" type="date"  [formField]="form.releasedAt">
+  </div>
+
+  <div class="field">
+    <label for="longDescription">Long Description</label>
+    <textarea  [formField]="form.longDescription" id="longDescription" rows="4" placeholder="Long description"></textarea>
+  </div>
+
+  <div class="modal-actions">
+    <button class="btn btn-ghost" type="button" (click)="close()">
+      <close-icon />
+      Close
+    </button>
+    <button class="btn btn-primary" type="submit">
+      <save-icon />
+      Save
+    </button>
+  </div>
+</form>
