@@ -11,7 +11,6 @@ import { ArrowLeftIconComponent, ArrowRightIconComponent, CheckIconComponent, Cr
   imports: [CreateCourseStep1Component, CreateCourseStep2Component, CreateCourseStep3Component, CreateCourseHeroIconComponent, ArrowRightIconComponent, ArrowLeftIconComponent, CheckIconComponent]
 })
 export class CreateCourseComponent {
-
   currentStep = signal(0);
 
   readonly steps = [

@@ -2,20 +2,18 @@
   <h3>Add Course Lessons</h3>
 
   <div class="add-lessons-form">
-    @for (lessonForm of step3Form.lessons; track lessonForm; let i = $index) {
+    @for (lesson of step3Model().lessons; track lesson; let i = $index) {
       <div class="lesson-row">
         <div class="field">
-          <input [formField]="lessonForm.title" placeholder="Lesson title">
-          <field-error [field]="lessonForm.title()" />
+          <input [value]="lesson.title" placeholder="Lesson title">
         </div>
         <div class="field">
-          <select [formField]="lessonForm.level">
+          <select>
             <option value="" disabled>Select level</option>
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
             <option value="advanced">Advanced</option>
           </select>
-          <field-error [field]="lessonForm.level()" />
         </div>
         <button class="btn-delete" type="button" (click)="deleteLesson(i)" title="Delete">×</button>
       </div>
