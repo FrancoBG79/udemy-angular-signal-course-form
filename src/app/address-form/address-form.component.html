@@ -1,23 +1,27 @@
-<form>
+<form [formRoot]="form">
   <legend>{{ legend() }}</legend>
 
   <div class="field">
     <label for="addressLine1">Address Line 1</label>
-    <input id="addressLine1" placeholder="Address Line 1">
+    <input id="addressLine1" placeholder="Address Line 1" [formField]="form.addressLine1">
+    <field-error [field]="form.addressLine1()" />
   </div>
 
   <div class="field">
     <label for="addressLine2">Address Line 2</label>
-    <input id="addressLine2" placeholder="Address Line 2">
+    <input id="addressLine2" placeholder="Address Line 2" [formField]="form.addressLine2">
+    <field-error [field]="form.addressLine2()" />
   </div>
 
   <div class="field">
     <label for="zipCode">Zip Code</label>
-    <input id="zipCode" placeholder="Zip Code">
+    <input id="zipCode" placeholder="Zip Code" [formField]="form.zipCode">
+    <field-error [field]="form.zipCode()" />
   </div>
 
   <div class="field">
     <label for="city">City</label>
-    <input id="city" placeholder="City">
+    <input id="city" placeholder="City" [formField]="form.city">
+    <field-error [field]="form.city()" />
   </div>
 </form>

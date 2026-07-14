@@ -13,19 +13,25 @@
     </div>
 
     <div class="profile-form">
-      <form>
+      <form [formRoot]="profileForm">
 
         <div class="field">
           <label>Profile picture</label>
-          <input type="file" accept="image/*">
+          <file-upload requiredFileType="image/*" [formField]="profileForm.avatarUrl" />
+          <!-- <input type="file" accept="image/*"> -->
         </div>
 
         <div class="field">
           <label for="email">Email address</label>
-          <input id="email" type="email" placeholder="your@email.com">
+          <input 
+            id="email" 
+            type="email" 
+            placeholder="your@email.com" 
+            [formField]="profileForm.email">
         </div>
 
         <!-- address-form component goes here -->
+        <address-form legend="Billing Address" [formField]="profileForm.address" />
 
         <div class="form-actions">
           <button class="btn btn-primary" type="submit">

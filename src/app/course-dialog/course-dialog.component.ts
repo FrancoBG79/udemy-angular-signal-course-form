@@ -21,7 +21,13 @@ export class CourseDialogComponent {
   saved = output<CourseFormData>();
   closed = output();
 
-  courseModel = signal<CourseFormData | null>(null);
+  // courseModel = signal<CourseFormData | null>(null);
+  courseModel = linkedSignal<CourseFormData>(() => ({
+    description: this.course().description,
+    category: this.course().category,
+    releasedAt: new Date(),
+    longDescription: this.course().longDescription
+  }))
 
   form = form(
     this.courseModel,
