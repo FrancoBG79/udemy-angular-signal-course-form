@@ -2,6 +2,7 @@ import { enableProdMode, provideZonelessChangeDetection } from '@angular/core';
 import { environment } from './environments/environment';
 import { provideHttpClient, withXhr } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppComponent } from './app/app.component';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app/app.routes';
@@ -14,6 +15,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes, withComponentInputBinding()),
     provideZonelessChangeDetection(),
+    provideAnimations(),
     provideHttpClient(withXhr())
   ]
 }).catch(err => console.log(err));

@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
+    selector: 'forms-app-root',
     templateUrl: './forms-app.component.html',
     styleUrls: ['./forms-app.component.css'],
     changeDetection: ChangeDetectionStrategy.Eager,
