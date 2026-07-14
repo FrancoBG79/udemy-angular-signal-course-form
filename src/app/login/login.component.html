@@ -7,21 +7,33 @@
       <p class="login-subtitle">Sign in to your account</p>
     </div>
 
-    <form class="login-form">
+    <form class="login-form" [formRoot]="form">
       <div class="field">
         <label for="email">Email address</label>
-        <input id="email" type="email" placeholder="your@email.com" autocomplete="email">
+        <input 
+          id="email" 
+          type="email" 
+          placeholder="your@email.com" 
+          autocomplete="email"
+          [formField]="form.email">
+        <field-error [field]="form.email()" />
       </div>
 
       <div class="field">
         <label for="password">Password</label>
-        <input id="password" type="password" placeholder="••••••••" autocomplete="current-password">
+        <input 
+          id="password" 
+          type="password" 
+          placeholder="••••••••" 
+          autocomplete="current-password"
+          [formField]="form.password">
+        <field-error [field]="form.password()" />
       </div>
 
       <div class="form-actions">
-        <button class="btn-login" type="submit">
+        <button class="btn-login" type="submit" [disabled]="form().submitting()">
           <sign-in-icon />
-          Sign in
+          @if (form().submitting()) { Signing in... } @else { Sign in }
         </button>
         <button class="btn-reset" type="button">
           <reset-icon />

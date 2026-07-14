@@ -4,9 +4,11 @@ import { ReadonlyFieldState } from '@angular/forms/signals';
 @Component({
   selector: 'field-error',
   template: `
-    <div class="err"></div>
+    @if (field().touched() && field().invalid()) {
+      <div class="err">{{ field().errors()[0]?.message }}</div>
+    }
   `
 })
 export class FieldErrorComponent {
-  field = input.required<unknown>();
+  field = input.required<ReadonlyFieldState<unknown>>();
 }
