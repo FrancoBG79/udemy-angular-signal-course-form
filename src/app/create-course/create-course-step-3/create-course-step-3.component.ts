@@ -1,19 +1,23 @@
 import { Component, signal } from '@angular/core';
-import { form, FormRoot } from '@angular/forms/signals';
+import { applyEach, form, FormRoot, required, FormField } from '@angular/forms/signals';
 import { Lesson, Step3Data } from './step3.model';
+import { FieldErrorComponent } from "../../field-error/field-error.component";
 
 @Component({
   selector: 'create-course-step-3',
   templateUrl: 'create-course-step-3.component.html',
   styleUrls: ['create-course-step-3.component.scss'],
-  imports: [FormRoot],
+  imports: [FormRoot, FormField, FieldErrorComponent],
 })
 export class CreateCourseStep3Component {
 
   step3Model = signal<Step3Data>({ lessons: [] });
 
   step3Form = form(this.step3Model, (path) => {
-
+    applyEach(path.lessons, (lessonPath) => {
+      required(lessonPath.title, { message: 'Lesson title is required.' });
+      required(lessonPath.level, { message: 'Lesson level is required.'});
+    })
   });
 
   addLesson() {

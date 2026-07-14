@@ -13,6 +13,7 @@ import {
 import { FieldErrorComponent } from '../../field-error/field-error.component';
 import { CourseCategory, STEP1_DEFAULT, Step1Data } from './step1.model';
 import { courseTitleExistsAsync } from './course-title.validator';
+import { withDraft } from '../with-draft';
 
 @Component({
   selector: 'create-course-step-1',
@@ -44,4 +45,8 @@ export class CreateCourseStep1Component {
     required(path.longDescription, { message: 'Description is required.' });
     minLength(path.longDescription, 3, { message: 'Description must be at least 3 characters.' });
   });
+
+  constructor() {
+    withDraft(this.step1Form, this.step1Model, 'step1');
+  }
 }
