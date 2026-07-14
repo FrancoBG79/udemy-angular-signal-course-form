@@ -1,0 +1,46 @@
+<div class="shell">
+  <header class="toolbar">
+    <a class="brand" routerLink="/">
+      <app-logo />
+      <span class="brand-name">Angular Forms In Depth (Signals Edition)</span>
+    </a>
+
+    <nav class="toolbar-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <courses-nav-icon />
+        Courses
+      </a>
+      <a routerLink="/about" routerLinkActive="active">
+        <about-nav-icon />
+        About
+      </a>
+      <a routerLink="/profile" routerLinkActive="active">
+        <user-nav-icon />
+        Profile
+      </a>
+      <a routerLink="/login" routerLinkActive="active">
+        <user-nav-icon />
+        Login
+      </a>
+    </nav>
+
+    <button class="hamburger" (click)="navOpen.set(!navOpen())" aria-label="Menu">
+      <hamburger-icon />
+    </button>
+  </header>
+
+  <div class="sidenav-backdrop" [class.open]="navOpen()" (click)="navOpen.set(false)"></div>
+
+  <nav class="sidenav" [class.open]="navOpen()" (click)="navOpen.set(false)">
+    <ul>
+      <li><a routerLink="/">Courses</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/profile">Profile</a></li>
+      <li><a routerLink="/login">Login</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
