@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    standalone: false,
 })
 export class LoginComponent implements OnInit {
 
@@ -18,6 +19,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  onSubmit(form: NgForm) {
+    console.log('Login Form: ', form.value, form.valid);
   }
 
 }

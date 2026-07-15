@@ -2,28 +2,54 @@
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
 
-    <form class="login-form data-form">
+    <form class="login-form data-form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
 
-      <mat-form-field appearance="outline">
-
+      <mat-form-field>
+        <mat-label>Email</mat-label>
         <input 
           matInput 
           type="email" 
           name="email"
-          placeholder="Email">
-
+          placeholder="Email"
+          ngModel
+          #email="ngModel"
+          required
+          email>
+          @if(email.errors?.required) {
+            <mat-error>This email is required.</mat-error>
+          } @else if (email.errors?.email) {
+            <mat-error>This email is not valid.</mat-error>
+          } 
       </mat-form-field>
 
       <mat-form-field>
-
+        <mat-label>Password</mat-label>
         <input 
           matInput 
           type="password" 
-          placeholder="Password">
+          name="password"
+          placeholder="Password"
+          ngModel
+          #password="ngModel"
+          required
+          passwordStrength>
 
+        <ng-container *ngIf="password.errors | onlyOneError: ['required', 'passwordStrength'] as error">
+          @if(error?.required) {
+            <mat-error>This password is required.</mat-error>
+          } @else if (error.passwordStrength) {
+            <mat-error>Password must include an uppercase letter, a lowercase letter, and a number.</mat-error>
+          }
+        </ng-container>
+
+        
       </mat-form-field>
 
-      <button mat-raised-button color="primary">
+      <button 
+        mat-raised-button 
+        color="primary"
+        type="submit"
+        [disabled]="loginForm.invalid">
         Login
       </button>
 

@@ -40,8 +40,11 @@ import {CreateCourseStep1Component} from './create-course/create-course-step-1/c
 import {FileUploadComponent} from './file-upload/file-upload.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {LoginReactiveComponent} from './login-reactive/login-reactive.component';
+import { PasswordStrengthDirective } from './directives/password-strength.directive';
+import { OnlyOneErrorPipe } from './pipes/only-one-error.pipe';
 
-@NgModule({ declarations: [
+@NgModule({ 
+    declarations: [
         AppComponent,
         HomeComponent,
         AboutComponent,
@@ -59,31 +62,34 @@ import {LoginReactiveComponent} from './login-reactive/login-reactive.component'
     ],
     bootstrap: [AppComponent],
     imports: [
-        CommonModule,
-        MatMenuModule,
-        MatButtonModule,
-        MatIconModule,
-        MatCardModule,
-        MatTabsModule,
-        MatSidenavModule,
-        MatListModule,
-        MatToolbarModule,
-        MatInputModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatProgressSpinnerModule,
-        MatDialogModule,
-        AppRoutingModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatRadioModule,
-        MatCheckboxModule,
-        MatStepperModule,
-        MatProgressBarModule,
-        FormsModule,
-        ReactiveFormsModule], providers: [
+    CommonModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    AppRoutingModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatStepperModule,
+    MatProgressBarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PasswordStrengthDirective,
+    OnlyOneErrorPipe
+    ], providers: [
         CoursesService,
         provideHttpClient(withInterceptorsFromDi())
     ] })
