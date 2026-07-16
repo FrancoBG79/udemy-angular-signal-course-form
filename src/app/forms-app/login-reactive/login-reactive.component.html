@@ -2,22 +2,37 @@
   <mat-card-title>Login (Reactive)</mat-card-title>
   <mat-card-content>
 
-    <form class="login-form data-form">
+    <form class="login-form data-form" (onSubmit)="onSubmit()" [formGroup]="form">
 
       <mat-form-field>
 
+        <!-- <input matInput type="email" name="email"
+               placeholder="Email" [formControl]="email"> -->
         <input matInput type="email" name="email"
-               placeholder="Email">
+               placeholder="Email" formControlName="email">
+        @if(email.errors?.required) {
+          <mat-error>This email is required.</mat-error>
+        } @else if (email.errors?.email) {
+          <mat-error>This email is not valid.</mat-error>
+        } 
 
       </mat-form-field>
 
       <mat-form-field>
 
-        <input matInput type="password" placeholder="Password">
+        <!-- <input matInput type="password" placeholder="Password" [formControl]="password"> -->
+        <input matInput type="password" placeholder="Password" formControlName="password">
+        @if(password.errors?.required) {
+          <mat-error>This email is required.</mat-error>
+        } @else if (password.errors?.minlength) {
+          <mat-error>Password length {{password.errors?.minlength.actualLength}}/{{password.errors?.minlength.requiredLength}}</mat-error>
+        } @else if (password.errors?.passwordStrength) {
+          <mat-error>Password must include an uppercase letter, a lowercase letter, and a number.</mat-error>
+        } 
 
       </mat-form-field>
 
-      <button mat-raised-button color="primary">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
         Login
       </button>
 
