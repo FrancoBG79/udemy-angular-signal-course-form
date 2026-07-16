@@ -3,7 +3,6 @@ import { CoursesService } from "../services/courses.service";
 import { map } from "rxjs/operators";
 
 export function courseTitleValidtor(coursesService: CoursesService): AsyncValidatorFn {
-  console.log('a')
   return (control: AbstractControl) => {
     return coursesService.findAllCourses()
       .pipe(
