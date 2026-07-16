@@ -9,7 +9,12 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
     templateUrl: './create-course.component.html',
     styleUrls: ['./create-course.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    standalone: false,
+    providers: [
+      {
+        provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true }
+      }
+    ]
 })
 export class CreateCourseComponent implements OnInit {
 

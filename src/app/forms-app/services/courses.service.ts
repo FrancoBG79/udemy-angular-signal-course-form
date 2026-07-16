@@ -20,10 +20,10 @@ export class CoursesService {
     }
 
     findCourseCategories() {
-      return this.http.get(`/api/course-categories`)
-        .pipe(
-          map(res => res["categories"])
-        );
+        return this.http.get(`/api/course-categories`)
+            .pipe(
+            map(res => res["categories"])
+            );
     }
 
     findAllCourses(): Observable<Course[]> {
