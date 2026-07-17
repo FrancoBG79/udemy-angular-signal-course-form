@@ -1,0 +1,29 @@
+<h3>Add Course Lessons:</h3>
+<div class="add-lessons-form" [formGroup]="form">
+  <ng-container formArrayName="lessons">
+    @for (lessonForm of lessonGroups; track $index) {
+      <ng-container>
+        <div class="lesson-form-row" [formGroup]="lessonForm">
+          <mat-form-field appearance="fill">
+            <input matInput formControlName="title" placeholder="Lesson title">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select formControlName="level" placeholder="Lesson Level">
+              @for (level of lessonsLevel; track level) {
+                <mat-option [value]="level.toLocaleLowerCase()">{{level}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-icon class="delete-btn" (click)="deleteLesson($index)">delete_forever</mat-icon>
+        </div>
+      </ng-container>
+    }
+  </ng-container>
+  
+  
+  <button matMiniFab aria-label="label" (click)="addLessons()">
+    <mat-icon class="add-course-btn">add</mat-icon>
+  </button>
+</div>

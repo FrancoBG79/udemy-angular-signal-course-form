@@ -23,4 +23,11 @@ export class CreateCourseComponent implements OnInit {
 
   }
 
+  submit(step1, step2, step3) {
+    console.log(
+      '\nStep 1 Form Value: ', step1, 
+      '\nStep 2 Form Value: ', step2, 
+      '\nStep 3 Form Value: ', step3
+    )
+  }
 }
